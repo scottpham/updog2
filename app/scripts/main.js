@@ -41,6 +41,11 @@ App.MainView = Backbone.View.extend({
       model: this.model
     });
 
+    this.upgradeAlert = new App.Views.UpgradeView({
+      el: $('#upgradeContainer'),
+      model: this.model
+    });
+
   },
   render: function() {
     //render template

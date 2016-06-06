@@ -132,28 +132,17 @@ var DogePic = Backbone.View.extend({
   initialize: function() {
     this.render();
 
+    // bounce when things are bought
     this.listenTo(this.model,
       'change:clickDoges change:timeIncrementer change:clickIncrementer',
-      this
-      .bounce);
+      this.bounce);
 
-    this.listenTo(this.model, 'change:count', this.changePic);
+    // change image when upgrade achieved
+    this.listenTo(Backbone, 'upgrade:stevie', this.changePic);
+
   },
   changePic: function(obj) {
-    var count = obj.attributes.count;
-    if (count < 5)
-      return
-
-    if (count == 1000) {
-      this.$el.find('img').attr('src', "/images/stevie.jpg");
-      this.$el.find('#upgradeText').text("STEVIE UPGRADE").animateCss(
-        'slideInUp');
-      window.setTimeout(function() {
-        $('#upgradeText').text("");
-      }, 2000);
-
-
-    }
+    this.$el.find('img').attr('src', "/images/stevie.jpg");
 
   },
   bounce: function() {
@@ -177,11 +166,37 @@ var StatsView = Backbone.View.extend({
   }
 });
 
+var UpgradeView = Backbone.View.extend({
+  template: _.template(require('!html!./templates/upgrade.html')),
+  render: function(data) {
+    this.$el.html(this.template(data));
+
+    this.$el.find('#upgradeContent').hide().fadeIn().slideDown();
+  },
+  stevie: function(args) {
+    console.log(args);
+
+    this.render({
+      text: "STEVIE UPGRADE"
+    });
+    var that = this;
+    // baleet after 1.5 seconds
+    window.setTimeout(function() {
+      // that.remove();
+      that.$el.fadeOut();
+    }, 1000);
+  },
+  initialize: function() {
+    this.listenTo(Backbone, 'upgrade:stevie', this.stevie);
+  }
+});
+
 module.exports = {
   Clicker: Clicker,
   BuyClickView: BuyClickView,
   UpgradeClickView: UpgradeClickView,
   GeneratorView: GeneratorView,
   DogePic: DogePic,
-  StatsView: StatsView
+  StatsView: StatsView,
+  UpgradeView: UpgradeView
 }

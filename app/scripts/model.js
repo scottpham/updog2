@@ -10,6 +10,7 @@ var Dogs = Backbone.Model.extend({
       dps: 0,
       generators: 0,
       clickUpgradeCost: 100,
+      upgrade: ''
     }
   },
   autoClicker: {},
@@ -174,9 +175,21 @@ var Dogs = Backbone.Model.extend({
     this.increaseCost('clickUpgradeCost');
 
     this.calculateDPS();
+  },
+  initialize: function() {
+    // events for upgrade
+    this.on('change:count', function(model, count) {
+      var currentUpgrade = this.get('upgrade');
+      // triggers event on 1000
+      if (currentUpgrade != 'stevie' && count > 1000) {
+        this.set('currentUpgrade', 'stevie');
+        Backbone.trigger('upgrade:stevie', this);
+      }
+    });
   }
+
 });
 
 module.exports = {
   Dogs: Dogs
-}
+};
