@@ -141,8 +141,18 @@ var DogePic = Backbone.View.extend({
   },
   changePic: function(obj) {
     var count = obj.attributes.count;
-    if (count == 5) {
-      this.$el.find('img').attr('src', "/images/logo.png");
+    if (count < 5)
+      return
+
+    if (count == 1000) {
+      this.$el.find('img').attr('src', "/images/stevie.jpg");
+      this.$el.find('#upgradeText').text("STEVIE UPGRADE").animateCss(
+        'slideInUp');
+      window.setTimeout(function() {
+        $('#upgradeText').text("");
+      }, 2000);
+
+
     }
 
   },
