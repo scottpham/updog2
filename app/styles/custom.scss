@@ -4,9 +4,10 @@
 	position: relative;
 }
 .vertical-center {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
+	// top: 50%;
+	// transform: translateY(-50%);
+  margin-top: 30px;
+
 }
 
 #mainRow {

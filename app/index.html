@@ -44,8 +44,7 @@
 			<!-- doge picture -->
 			<div class="row" >
 
-				<div class="col-xs-12 text-center">
-					<img class="animated" src="images/doge.jpeg" id="dogepic" alt="doge">
+				<div class="col-xs-12 text-center" id="dogepicContainer">
 				</div>
 
 				<!-- stats -->
@@ -95,10 +94,7 @@
 	  </div>
   </script>
 
-<!-- template for stats buy -->
-	<script id="statsTemplate" type="text/html">
-		<div class="text-center">Doges: <%= count %> | Doges per second: <%= dps %> | Click Doges: <%= clickDoges %> | Doge Generators: <%= generators %></div>
-	</script>
+
 
 
     <!-- build:js vendor.js -->

@@ -18,8 +18,6 @@ var Clicker = Backbone.View.extend({
   // template: _.template($('#buttonTemplate').html()),
   initialize: function() {
     this.render();
-    //re render on model change (not sure if I need this)
-    // this.listenTo(this.model, 'change', this.render);
   },
   events: {
     'click': 'handleClick'
@@ -39,7 +37,8 @@ var Clicker = Backbone.View.extend({
 
 // buy button for click view
 var BuyClickView = Backbone.View.extend({
-  template: _.template($('#buyClickDogeTemplate').html()),
+  template: _.template(require(
+    '!html!./templates/buyClickDogeTemplate.html')),
   initialize: function() {
     this.render();
 
@@ -115,8 +114,10 @@ var GeneratorView = Backbone.View.extend({
 
 // top pic
 var DogePic = Backbone.View.extend({
-  template: {},
+  template: _.template(require('!html!./templates/dogePic.html')),
   render: function() {
+
+    this.$el.html(this.template(this.model.toJSON()));
 
     this.delegateEvents();
 
@@ -125,7 +126,7 @@ var DogePic = Backbone.View.extend({
     "click": "handleClick"
   },
   handleClick: function() {
-    this.$el.animateCss('bounce');
+    this.$el.find('img').animateCss('bounce');
     this.model.clickIncrement();
   },
   initialize: function() {
@@ -135,14 +136,23 @@ var DogePic = Backbone.View.extend({
       'change:clickDoges change:timeIncrementer change:clickIncrementer',
       this
       .bounce);
+
+    this.listenTo(this.model, 'change:count', this.changePic);
+  },
+  changePic: function(obj) {
+    var count = obj.attributes.count;
+    if (count == 5) {
+      this.$el.find('img').attr('src', "/images/logo.png");
+    }
+
   },
   bounce: function() {
-    this.$el.animateCss('bounce');
+    this.$el.find('img').animateCss('bounce');
   }
 });
 
 var StatsView = Backbone.View.extend({
-  template: _.template($('#statsTemplate').html()),
+  template: _.template(require('!html!./templates/stats.html')),
   initialize: function() {
     this.render();
 

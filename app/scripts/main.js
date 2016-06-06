@@ -3,7 +3,7 @@
 window.App = window.App || {};
 
 //import scripts
-App.Dogs = require('./Dogs.js').Dogs;
+App.Dogs = require('./model.js').Dogs;
 App.Views = require('./Views.js');
 
 //main app view
@@ -21,7 +21,7 @@ App.MainView = Backbone.View.extend({
 
     //doge pic and button
     this.dogePic = new App.Views.DogePic({
-      el: $('#dogepic'),
+      el: $('#dogepicContainer'),
       model: this.model
     });
 
@@ -57,6 +57,7 @@ $(document).ready(function() {
 
   App.dogs = new App.Dogs();
 
+  // run the view and insert the model
   App.main = new App.MainView({
     model: App.dogs
   });
