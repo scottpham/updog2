@@ -1,5 +1,6 @@
 @import "./vars.scss";
 
+$lighterblack: lighten($black, 20%);
 
 #backboneEl {
 	height: 100vh;
@@ -11,7 +12,7 @@
 
 // stats table
 #stats {
-  color: lighten($black, 20%);
+  color: $lighterblack;
   border-width: 1px;
 }
 
@@ -26,10 +27,6 @@
   border-bottom-color: maroon;
 }
 
-#stats th {
-  color: $black;
-  font-size: 22px;
-}
 
 #mainRow {
 	width: 100%;
@@ -41,6 +38,14 @@ hr {
     margin-top: 20px;
     margin-bottom: 20px;
     width: 75%;
+}
+
+.statsHr {
+  margin-top:10px;
+  margin-bottom:25px;
+  width: 50%;
+  height:1px;
+  background-color: maroon;
 }
 
 #clicker{
@@ -61,7 +66,7 @@ hr {
 .upgradeBackground {
   position: fixed;
   z-index: 1;
-  padding-top: 10%;
+  padding-top: 25%;
   left: 0;
   top: 0;
   width: 100%;
@@ -75,12 +80,10 @@ hr {
   // display: none;
   background-color: #fefefe;
   margin: auto;
-  padding: 20px;
+  padding: 30px;
   border: 1px solid #888;
   width: 50%;
   text-align: center;
   font-size: 34px;
   color: maroon;
-
-
 }

@@ -59,8 +59,9 @@ var BuyClickView = Backbone.View.extend({
   }
 });
 
+// upgrade the clicks
 var UpgradeClickView = Backbone.View.extend({
-  template: _.template($('#upgradeClickTemplate').html()),
+  template: _.template(require('!html!./templates/upgradeClicks.html')),
   initialize: function() {
     this.render();
 
@@ -85,14 +86,13 @@ var UpgradeClickView = Backbone.View.extend({
 
 //buy a generator button
 var GeneratorView = Backbone.View.extend({
-  template: _.template($('#generatorTemplate').html()),
+  template: _.template(require('!html!./templates/buyGenerator.html')),
   initialize: function() {
 
     this.render();
 
     // re-render on change to model
     this.listenTo(this.model, 'change:generatorCost', this.render);
-
 
   },
   events: {
@@ -150,6 +150,7 @@ var DogePic = Backbone.View.extend({
   }
 });
 
+// table for stats
 var StatsView = Backbone.View.extend({
   template: _.template(require('!html!./templates/stats.html')),
   initialize: function() {
@@ -166,6 +167,7 @@ var StatsView = Backbone.View.extend({
   }
 });
 
+// modal that tells you when upgrade happens
 var UpgradeView = Backbone.View.extend({
   template: _.template(require('!html!./templates/upgrade.html')),
   render: function(data) {
