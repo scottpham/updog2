@@ -182,7 +182,7 @@ var Dogs = Backbone.Model.extend({
       var currentUpgrade = this.get('upgrade');
       // triggers event on 1000
       if (currentUpgrade != 'stevie' && count > 1000) {
-        this.set('currentUpgrade', 'stevie');
+        this.set('upgrade', 'stevie');
         Backbone.trigger('upgrade:stevie', this);
       }
     });
