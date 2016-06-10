@@ -60,6 +60,7 @@ $(document).ready(function() {
 
   console.log("doc loaded");
 
+  // model
   App.dogs = new App.Dogs();
 
   // run the view and insert the model

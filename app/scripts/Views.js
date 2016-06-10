@@ -45,7 +45,7 @@ var BuyClickView = Backbone.View.extend({
     this.listenTo(this.model, 'change:clickerCost', this.render);
   },
   events: {
-    "click": "handleClick"
+    "click button": "handleClick"
   },
   handleClick: function() {
     this.model.buyClickDoge();
@@ -69,7 +69,7 @@ var UpgradeClickView = Backbone.View.extend({
     this.listenTo(this.model, 'change:clickUpgradeCost', this.render);
   },
   events: {
-    "click": "handleClick"
+    "click button": "handleClick"
   },
   handleClick: function() {
     this.model.upgradeClick();
@@ -96,7 +96,7 @@ var GeneratorView = Backbone.View.extend({
 
   },
   events: {
-    "click": "handleClick"
+    "click button": "handleClick"
   },
   handleClick: function() {
     this.model.buyGenerator();
