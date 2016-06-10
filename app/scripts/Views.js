@@ -61,7 +61,7 @@ var BuyClickView = Backbone.View.extend({
 
 // upgrade the clicks
 var UpgradeClickView = Backbone.View.extend({
-  template: _.template(require('!html!./templates/upgradeClicks.html')),
+  template: _.template(require('!raw!./templates/upgradeClicks.html')),
   initialize: function() {
     this.render();
 
@@ -86,7 +86,7 @@ var UpgradeClickView = Backbone.View.extend({
 
 //buy a generator button
 var GeneratorView = Backbone.View.extend({
-  template: _.template(require('!html!./templates/buyGenerator.html')),
+  template: _.template(require('!raw!./templates/buyGenerator.html')),
   initialize: function() {
 
     this.render();
@@ -114,7 +114,7 @@ var GeneratorView = Backbone.View.extend({
 
 // top pic
 var DogePic = Backbone.View.extend({
-  template: _.template(require('!html!./templates/dogePic.html')),
+  template: _.template(require('!raw!./templates/dogePic.html')),
   render: function() {
 
     this.$el.html(this.template(this.model.toJSON()));
@@ -152,7 +152,7 @@ var DogePic = Backbone.View.extend({
 
 // table for stats
 var StatsView = Backbone.View.extend({
-  template: _.template(require('!html!./templates/stats.html')),
+  template: _.template(require('!raw!./templates/stats.html')),
   initialize: function() {
     this.render();
 
@@ -169,7 +169,7 @@ var StatsView = Backbone.View.extend({
 
 // modal that tells you when upgrade happens
 var UpgradeView = Backbone.View.extend({
-  template: _.template(require('!html!./templates/upgrade.html')),
+  template: _.template(require('!raw!./templates/upgrade.html')),
   render: function(data) {
     this.$el.html(this.template(data));
 
