@@ -38,7 +38,7 @@ var Clicker = Backbone.View.extend({
 // buy button for click view
 var BuyClickView = Backbone.View.extend({
   template: _.template(require(
-    '!html!./templates/buyClickDogeTemplate.html')),
+    '!raw!./templates/buyClickDogeTemplate.html')),
   initialize: function() {
     this.render();
 
