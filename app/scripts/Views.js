@@ -142,7 +142,7 @@ var DogePic = Backbone.View.extend({
 
   },
   changePic: function(obj) {
-    this.$el.find('img').attr('src', "/images/stevie.jpg");
+    this.$el.find('img').attr('src', "images/stevie.jpg");
 
   },
   bounce: function() {
