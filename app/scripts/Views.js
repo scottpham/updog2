@@ -139,6 +139,8 @@ var DogePic = Backbone.View.extend({
 
     this.delegateEvents();
 
+    console.log("Rendered!")
+
   },
   events: {
     "click": "handleClick"
@@ -152,16 +154,11 @@ var DogePic = Backbone.View.extend({
 
     // bounce when things are bought
     this.listenTo(this.model,
-      'change:clickDoges change:timeIncrementer change:clickIncrementer',
+      'change:clickDoges change:generators change:timeIncrementer change:clickIncrementer',
       this.bounce);
 
     // change image when upgrade achieved
-    this.listenTo(Backbone, 'upgrade:stevie', this.changePic);
-
-  },
-  changePic: function(obj) {
-    this.$el.find('img').attr('src', "images/stevie.jpg");
-
+    this.listenTo(this.model, 'change:upgrade', this.render);
   },
   bounce: function() {
     this.$el.find('img').animateCss('bounce');
