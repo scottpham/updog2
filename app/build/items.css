@@ -1,0 +1,1 @@
+body:before{white-space:pre;font-family:monospace;content:"Error: Undefined variable: \"$lighterblack\".\A         on line 6 of app/styles/items.scss\A \A 1: \A 2: // click buttons\A 3: \A 4: .itemDescription {\A 5:   font-size: 15px;\A 6:   color: $lighterblack;\A 7:   border-left: solid 1px maroon;\A 8:   border-right: solid 1px maroon;\A 9: }\A 10: \A 11: .itemLabel {"}
