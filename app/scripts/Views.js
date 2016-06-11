@@ -44,6 +44,12 @@ var BuyClickView = Backbone.View.extend({
 
     this.listenTo(this.model, 'change:clickerCost', this.render);
   },
+  formatter: function(num) {
+    if (num < 10000)
+      return numeral(num).format('0,0');
+    else
+      return numeral(num).format('0.0a');
+  },
   events: {
     "click button": "handleClick"
   },
@@ -67,6 +73,12 @@ var UpgradeClickView = Backbone.View.extend({
 
     //re-render on change
     this.listenTo(this.model, 'change:clickUpgradeCost', this.render);
+  },
+  formatter: function(num) {
+    if (num < 10000)
+      return numeral(num).format('0,0');
+    else
+      return numeral(num).format('0.0a');
   },
   events: {
     "click button": "handleClick"
@@ -94,6 +106,12 @@ var GeneratorView = Backbone.View.extend({
     // re-render on change to model
     this.listenTo(this.model, 'change:generatorCost', this.render);
 
+  },
+  formatter: function(num) {
+    if (num < 10000)
+      return numeral(num).format('0,0');
+    else
+      return numeral(num).format('0.0a');
   },
   events: {
     "click button": "handleClick"
@@ -153,6 +171,12 @@ var DogePic = Backbone.View.extend({
 // table for stats
 var StatsView = Backbone.View.extend({
   template: _.template(require('!raw!./templates/stats.html')),
+  formatter: function(num) {
+    if (num < 10000)
+      return numeral(num).format('0,0');
+    else
+      return numeral(num).format('0.0a');
+  },
   initialize: function() {
     this.render();
 
@@ -175,6 +199,7 @@ var UpgradeView = Backbone.View.extend({
 
     this.$el.find('#upgradeContent').hide().fadeIn().slideDown();
   },
+
   stevie: function(args) {
     console.log(args);
 
