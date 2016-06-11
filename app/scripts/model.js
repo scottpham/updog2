@@ -73,9 +73,6 @@ var Dogs = Backbone.Model.extend({
     //this just rounds down
     return Math.floor(num);
   },
-  formatter: function(num) {
-    return numeral(num).format('0,0');
-  },
   increaseCost: function(buyable) {
     var cost = this.get(buyable);
     var newCost = cost * (1.3);
