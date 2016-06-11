@@ -69,7 +69,7 @@ var Dogs = Backbone.Model.extend({
     this.set('dps', clickDps + generatorDps);
 
   },
-  formatter: function(num) {
+  roundDown: function(num) {
     //this just rounds down
     return Math.floor(num);
   },
@@ -77,7 +77,7 @@ var Dogs = Backbone.Model.extend({
     var cost = this.get(buyable);
     var newCost = cost * (1.3);
 
-    this.set(buyable, this.formatter(newCost));
+    this.set(buyable, this.roundDown(newCost));
   },
   setGenerator: function() {
     var generators = this.get('generators');
