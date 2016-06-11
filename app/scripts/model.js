@@ -102,6 +102,10 @@ var Dogs = Backbone.Model.extend({
   setClickDoge: function() {
 
     var clickers = this.get('clickDoges');
+
+    if (clickers == 0)
+      return
+
     var interval = 10000 / clickers;
     // clear out old interval
     this.stopAutoClick();
@@ -195,13 +199,12 @@ var Dogs = Backbone.Model.extend({
         resolve(that.fetch());
       });
     }
-
-
     promise().then(function() {
       console.log("setting intervals...");
       that.setGenerator();
       that.setClickDoge();
     });
+
 
     // save to storage every minute
     window.setInterval(function() {
