@@ -22,6 +22,9 @@ var bs = browserSync.create();
 // css autoprefixing
 // should move dev/build location?
 // move some config to package.json
+// new favicon
+// move alerts to modal
+//
 
 gulp.task('scripts:dev', function() {
   return gulp.src('app/scripts/main.js')
