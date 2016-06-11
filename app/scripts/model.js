@@ -1,4 +1,12 @@
 var Dogs = Backbone.Model.extend({
+  fetch: function() {
+    console.log("fetched");
+    this.set(JSON.parse(localStorage.getItem(this.id)));
+  },
+  save: function() {
+    console.log("saved");
+    localStorage.setItem(this.id, JSON.stringify(this.toJSON()));
+  },
   defaults: function() {
     return {
       timeIncrementer: 1,
@@ -177,6 +185,14 @@ var Dogs = Backbone.Model.extend({
     this.calculateDPS();
   },
   initialize: function() {
+
+    // get data from localStorage
+    this.fetch();
+    var that = this;
+    // save to storage
+    window.setInterval(function() {
+      that.save();
+    }, 60000);
     // events for upgrade
     this.on('change:count', function(model, count) {
       var currentUpgrade = this.get('upgrade');
