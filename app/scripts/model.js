@@ -18,7 +18,8 @@ var Dogs = Backbone.Model.extend({
       dps: 0,
       generators: 0,
       clickUpgradeCost: 100,
-      upgrade: ''
+      upgrade: '',
+      photo: 'images/doge.jpeg'
     }
   },
   autoClicker: {},
@@ -160,7 +161,7 @@ var Dogs = Backbone.Model.extend({
 
   },
   clickIncrement: function() {
-    console.log('clickIncrement fired');
+    // console.log('clickIncrement fired');
     var newCount = this.get('count') + this.get('clickIncrementer');
 
     this.set({
@@ -186,19 +187,36 @@ var Dogs = Backbone.Model.extend({
   },
   initialize: function() {
 
-    // get data from localStorage
-    this.fetch();
     var that = this;
-    // save to storage
+
+    // get data from localStorage
+    var promise = function() {
+      return new Promise(function(resolve, reject) {
+        resolve(that.fetch());
+      });
+    }
+
+
+    promise().then(function() {
+      console.log("setting intervals...");
+      that.setGenerator();
+      that.setClickDoge();
+    });
+
+    // save to storage every minute
     window.setInterval(function() {
       that.save();
     }, 60000);
     // events for upgrade
     this.on('change:count', function(model, count) {
+
       var currentUpgrade = this.get('upgrade');
+
+      var that = this;
       // triggers event on 1000
       if (currentUpgrade != 'stevie' && count > 1000) {
         this.set('upgrade', 'stevie');
+        this.set('photo', 'images/stevie.jpg');
         Backbone.trigger('upgrade:stevie', this);
       }
     });
